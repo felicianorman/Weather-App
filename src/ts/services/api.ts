@@ -7,7 +7,7 @@ export function getWeather(searchText: string): Promise<IWeatherResponse[]> {
   searchText}&lang=sv`
   return axios
     .get(
-      "http://api.weatherapi.com/v1/current.json?key=4da078cc9068479c9ef140703231903&q=" +
+      "https://api.weatherapi.com/v1/current.json?key=4da078cc9068479c9ef140703231903&q=" +
         searchText +
         "&lang=sv"
     )
