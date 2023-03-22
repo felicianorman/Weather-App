@@ -1,6 +1,7 @@
 import { ILocation } from "./models/ILocation";
 import { IWeatherResponse } from "./models/IWeatherResponse";
 import { getWeather } from "./services/api";
+import axios from "axios";
 
 let hej: HTMLInputElement = document.getElementById(
   "searchWeather"
@@ -36,22 +37,21 @@ async function createHTML(weather) {
     for (let i = 0; i < values.length; i++) {
       console.log(values[i].location);
       console.log(values[i].current);
-      console.log(values[i].current.condition.text);
 
       let h1 = document.createElement("h1") as HTMLHeadingElement;
       h1.innerHTML = values[i].location.name;
 
       let h2 = document.createElement("h2") as HTMLHeadingElement;
-      h2.innerHTML = `Just nu är det ${values[i].current.temp_c} °C`;
+      h2.innerHTML = `Just nu är det ${values[i].current.temperature} °C`;
 
       let h3 = document.createElement("h3") as HTMLHeadingElement;
-      h3.innerHTML = values[i].current.condition.text;
+      h3.innerHTML = values[i].current.weather_descriptions;
 
       let pTag = document.createElement("p") as HTMLParagraphElement;
       pTag.innerHTML = values[i].location.localtime;
 
       let img = document.createElement("img") as HTMLImageElement;
-      img.src = values[i].current.condition.icon;
+      img.src = values[i].current.weather_icons;
       img.alt = "Väder";
       img.classList.add("weather-img");
 
