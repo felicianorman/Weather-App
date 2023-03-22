@@ -14,21 +14,22 @@
 
     <script type="module" defer src="ts/main.ts"></script>
     <link href="scss/main.scss" rel="stylesheet" />
-    <title>Väder</title>
+    <title>Hur är vädret?</title>
   </head>
   <body>
     <div class="wrapper">
+
       <div class="displayWeather" id="container">
-        <h2 class="searchH2">Sök</h2>
+        <h1 class="weatherTitle">Hur är vädret?</h1>
         <div class="searchWrapper">
           <form id="searchForm">
             <input
               type="text"
               id="searchWeather"
               class="search"
-              placeholder="Ange en stad"
+              placeholder="Ange stad eller land"
             />
-            <button type="submit" id="weatherBtn">Sök</button>
+            <button type="submit" id="weatherBtn" class="searchWeatherBtn">Sök</button>
           </form>
         </div>
       </div>
