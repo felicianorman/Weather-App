@@ -35,23 +35,23 @@ async function createHTML(weather) {
     console.log(values);
 
     for (let i = 0; i < values.length; i++) {
-      console.log(values[i].location);
-      console.log(values[i].current);
+      console.log(values[i].main);
 
       let h1 = document.createElement("h1") as HTMLHeadingElement;
-      h1.innerHTML = values[i].location.name;
+      h1.innerHTML = values[i].name;
+      console.log(values[i].name)
 
       let h2 = document.createElement("h2") as HTMLHeadingElement;
-      h2.innerHTML = `Just nu är det ${values[i].current.temperature} °C`;
+      h2.innerHTML = `Just nu är det ${values[i].main.temp} °C`;
 
       let h3 = document.createElement("h3") as HTMLHeadingElement;
-      h3.innerHTML = values[i].current.weather_descriptions;
+      h3.innerHTML = `Det är ${values[i].weather[0].description}`;
 
-      let pTag = document.createElement("p") as HTMLParagraphElement;
-      pTag.innerHTML = values[i].location.localtime;
+      // let pTag = document.createElement("p") as HTMLParagraphElement;
+      // pTag.innerHTML = values[i].location.localtime;
 
       let img = document.createElement("img") as HTMLImageElement;
-      img.src = values[i].current.weather_icons;
+      img.src = `https://openweathermap.org/img/w/${values[i].weather[0].icon}.png`
       img.alt = "Väder";
       img.classList.add("weather-img");
 
@@ -59,7 +59,7 @@ async function createHTML(weather) {
       div.appendChild(h2);
       div.appendChild(img);
       div.appendChild(h3);
-      div.appendChild(pTag);
+      // div.appendChild(pTag);
 
       weatherWrapper.appendChild(div);
     }

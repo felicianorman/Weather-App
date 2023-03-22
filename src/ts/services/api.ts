@@ -3,14 +3,16 @@ import { IWeatherResponse } from "../models/IWeatherResponse";
 import * as dotenv from "dotenv";
 dotenv.config();
 
+const apiKey = process.env.API_KEY;
+
 export function getWeather(searchText: string): Promise<IWeatherResponse[]> {
   return axios
     .get(
-      "http://api.weatherstack.com/current?access_key=63f5e451d49e4daf866fe1cc09b89186&query=" +
-        searchText
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
+        searchText +
+        "&appid=" + apiKey + "&lang=sv&units=metric"
     )
     .then((response) => {
       return response.data;
     });
 }
-
